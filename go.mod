@@ -11,3 +11,5 @@ require (
 	github.com/hashicorp/terraform v0.12.0
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 )
+
+replace git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
