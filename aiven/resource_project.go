@@ -3,7 +3,7 @@
 package aiven
 
 import (
-	"github.com/aiven/aiven-go-client"
+	"github.com/thazel31/aiven-go-client"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -52,6 +52,11 @@ var aivenProjectSchema = map[string]*schema.Schema{
 		Elem:        &schema.Schema{Type: schema.TypeString},
 		Optional:    true,
 	},
+	"vat_id": {
+		Type:        schema.TypeString,
+		Description: "EU VAT identification number",
+		Optional:    true,
+	},
 }
 
 func resourceProject() *schema.Resource {
@@ -76,6 +81,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 	projectName := d.Get("project").(string)
+	vatID := d.Get("vat_id").(string)
 	project, err := client.Projects.Create(
 		aiven.CreateProjectRequest{
 			BillingAddress:  optionalStringPointer(d, "billing_address"),
@@ -85,6 +91,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 			CountryCode:     optionalStringPointer(d, "country_code"),
 			Project:         projectName,
 			TechnicalEmails: contactEmailListForAPI(d, "technical_emails", true),
+			VatID: vatID,
 		},
 	)
 	if err != nil {

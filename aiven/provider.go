@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/aiven/aiven-go-client"
+	"github.com/thazel31/aiven-go-client"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )

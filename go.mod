@@ -10,4 +10,6 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/terraform v0.12.0
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.3 // indirect
+	github.com/thazel31/aiven-go-client v1.2.0
 )
